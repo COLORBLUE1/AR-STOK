@@ -5,22 +5,16 @@ import Header from "../components/Header";
 import { LugaresCards } from "../components/LugaresCards";
 
 const SectionHeader = styled.header`
-  background: rgb(238, 174, 202);
-  background: radial-gradient(
-    circle,
-    rgba(238, 174, 202, 1) 0%,
-    rgba(148, 187, 233, 1) 100%
-  );
+  background: url(https://img.freepik.com/foto-gratis/mitad-espacio-copia-pescado_23-2148708639.jpg);
+  background-attachment: fixed;
   background-size: cover;
   background-repeat: no-repeat;
-  background-position: center;
-  height: 80vh;
+  background-position: right;
+  height: 70vh;
 
   div {
-    backdrop-filter: blur(3px);
+    backdrop-filter: blur(4px);
     height: 100%;
-    width: 100%;
-
     h1 {
       text-align: center;
     }
