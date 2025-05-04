@@ -10,7 +10,7 @@ const SectionHeader = styled.header`
   background-size: cover;
   background-repeat: no-repeat;
   background-position: right;
-  height: 70vh;
+  height: 100vh;
 
   div {
     backdrop-filter: blur(4px);

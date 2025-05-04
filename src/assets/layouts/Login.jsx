@@ -1,10 +1,11 @@
-import { useNavigate } from "react-router";
+import { Link, useNavigate } from "react-router";
 import { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import styled from "styled-components";
+
 export const Contenedormain = styled.div`
   font-family: sans-serif;
   position: relative;
@@ -39,7 +40,7 @@ export const Contenedoricon = styled.div`
     color: #fff;
     font-family: Raleway;
     font-weight: 400;
-    font-size: 25px;
+    font-size: 15px;
 
     //animacion
 
@@ -59,8 +60,8 @@ export const Img = styled.img`
   margin: auto;
   background: #ffffff;
   padding: 5px;
-    border-radius: 50%;
-    margin: 30px;
+  border-radius: 50%;
+  margin: 30px;
   //animacion de imagen
 
   animation: bounceIn;
@@ -74,7 +75,8 @@ export const TextField = styled.input`
   height: 40px;
   box-sizing: border-box;
   border-radius: 10px;
-  padding: 20px;
+  padding-left: 30px;
+  font-family: sans-serif;
 
   &:focus-visible {
     outline: none;
@@ -82,7 +84,7 @@ export const TextField = styled.input`
 
   &::placeholder {
     color: gray;
-    font-family: Raleway;
+    font-family: sans-serif;
   }
 `;
 
@@ -92,24 +94,41 @@ export const Contenedorinput = styled.section`
   gap: 20px;
   margin-top: 50px;
   justify-items: center;
+
+  span {
+    font-family: sans-serif;
+    color: #ffffff;
+    padding: 15px;
+    a {
+      color: #fffb00;
+      text-decoration: none;
+      text-decoration: underline;
+      font-size: 1rem;
+      margin-left: 5px;
+    }
+  }
 `;
 
 export const Boton = styled.button`
-  width: 350px;
-  height: 50px;
-  font-size: clamp(1.25rem, 0.804rem + 1.19vw, 1.875rem);
+  width: 100px;
+  height: 35px;
+  font-size: 15px;
   text-align: center;
   font-family: sans-serif;
+  text-transform: uppercase;
   padding: 10px;
-  background-color: #a5a5a5;
+  background-color: #2e5a0a89;
   border: none;
-  border-radius: 50px;
-  color: black;
+  border-radius: 15px;
   cursor: pointer;
-  margin-bottom: 20px;
-  margin-top: 20px;
+  margin: 20px 50px;
   transition: all 0.3s ease-in-out;
   color: white;
+
+  &:hover {
+    background-color: #2e5a0a;
+    transform: scale(1.05);
+  }
 `;
 
 export const LogoImg = styled.img`
@@ -144,10 +163,10 @@ export const Sectionhome = styled.section`
 
 // Estilos del contenedor del login
 export const Contenedorlogin = styled.div`
-  background: #2af1ff;
+  border: 1px solid #ffffff83;
+  backdrop-filter: blur(10px);
   display: grid;
   justify-items: center;
-  width: clamp(25rem, 16.071rem + 23.81vw, 37.5rem);
   font-family: Roboto;
   border-radius: 20px;
   color: #ffffff7d;
@@ -196,13 +215,12 @@ export function Login() {
 
         toast.success("¡Inicio de sesión exitoso!");
 
-  
         if (rol === "admin") {
-          navigate("/admin-dashboard"); 
+          navigate("/admin-dashboard");
         } else if (rol === "guia") {
-          navigate("/Lugar-dashboard"); 
+          navigate("/Lugar-dashboard");
         } else {
-          navigate("/"); 
+          navigate("/");
         }
       } else {
         setErrorMessage(data.message || "Error en el inicio de sesión");
@@ -222,19 +240,13 @@ export function Login() {
         display: "flex",
         height: "100vh",
         alignItems: "center",
-        background: "rgb(238,174,206)",
-        background: "radial-gradient(circle, rgba(238,174,206,1) 0%, rgba(132,101,247,1) 100%)"
-            }}
+        background:
+          "url(https://img.freepik.com/fotos-premium/sobremesa-madera-vacia-fondo-borroso-abstracto-restaurante-cafe-puede-ser-utilizado-exhibir-o-montar-sus-productos_7191-916.jpg) no-repeat center center fixed",
+        backgroundSize: "cover",
+      }}
     >
       <Contenedorlogin>
         <Contenedoricon>
-          <p
-            style={{
-              fontSize: "20px",
-              color: "#000000",
-              fontFamily: "arial",
-              fontWeight: 400,
-            }}>VIVE UNA NUEVA EXPERIENCIUA EN CALI</p>
           <Contenedorinput>
             <Formik
               initialValues={{ email: "", password: "" }}
@@ -243,11 +255,6 @@ export function Login() {
             >
               {({ isSubmitting }) => (
                 <Form>
-                  <ErrorMessage
-                    name="email"
-                    component="div"
-                    style={{ color: "#fff" }}
-                  />
                   <Field
                     as={TextField}
                     style={{ margin: 10 }}
@@ -257,9 +264,9 @@ export function Login() {
                   />
 
                   <ErrorMessage
-                    name="password"
+                    name="email"
                     component="div"
-                    style={{ color: "#fff" }}
+                    style={{ color: "#570000", fontFamily: "sans-serif" }}
                   />
                   <Field
                     as={TextField}
@@ -269,15 +276,25 @@ export function Login() {
                     placeholder="contraseña"
                   />
 
+                  <ErrorMessage
+                    name="password"
+                    component="div"
+                    style={{ color: "#570000", fontFamily: "sans-serif" }}
+                  />
                   {errorMessage && (
                     <div style={{ color: "white" }}>{errorMessage}</div>
                   )}
                   <Boton type="submit" disabled={isSubmitting}>
-                    ¡Iniciar sesión!
+                    Ingresar
                   </Boton>
                 </Form>
               )}
             </Formik>
+
+            <span>
+              ¿Aún no tienes una cuenta?
+              <Link to="/">Registrarse</Link>
+            </span>
           </Contenedorinput>
         </Contenedoricon>
         <ToastContainer />
