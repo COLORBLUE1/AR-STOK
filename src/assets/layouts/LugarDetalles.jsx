@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import CircularProgress from '@mui/material/CircularProgress';
 import styled from "styled-components";
+import Footer from "../components/Footer";
 
 const SectionMain = styled.section`
   background-size: cover;
@@ -80,6 +81,7 @@ export function LugarDetalles() {
       <div>
         <p>{lugar.descripcionlarga}</p>
       </div>
+       <Footer/>
     </SectionMain>
   );
 }

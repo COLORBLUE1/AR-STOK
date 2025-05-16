@@ -40,7 +40,7 @@ input{
   margin-top: 20px;
 }
 button {
-  background: #bd6500;
+  background: #02c5fb;
   color: #ffffff;
   border: none;
   border-radius: 20px;

@@ -1,25 +1,28 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import { Link } from "react-router";
 
 const Navbar = styled.nav`
-  background: linear-gradient(180deg, #ffffff3e, transparent);
+  background: #000000c3;
+  height: 0;
   color: #ffffff;
   display: flex;
   padding: 2rem;
   position: sticky;
   top: 0;
   z-index: 1000;
-  justify-content: space-around;
+  justify-content: space-between;
+  
   ul {
     display: flex;
     margin: 0;
     gap: 30px;
     justify-content: center;
     align-items: center;
+
     .ingresar {
       a {
-        background: #fd2f2f;
+        background: #02c5fb;
         color: #ffffff;
         padding: 0.2rem 0.2rem;
         border-radius: 15px;
@@ -34,6 +37,7 @@ const Navbar = styled.nav`
         animation: fadeIn;
         animation-duration: 1s;
         transition: all 0.1s;
+        font-family: nunito;
 
         &:hover {
           background: #00eeff;
@@ -47,7 +51,7 @@ const Navbar = styled.nav`
       font-size: 1.1rem;
       font-weight: bold;
       text-transform: uppercase;
-      font-family: "Roboto", sans-serif;
+      font-family: nunito;
       transition: color 0.3s;
 
       &:hover {
@@ -68,6 +72,14 @@ const Navbar = styled.nav`
 `;
 
 const AppBar = () => {
+
+  useEffect(() => {
+const login = true;
+
+console.log("Hola", login);
+
+  }, []);
+
   return (
     <Navbar>
       <ul>

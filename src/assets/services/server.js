@@ -6,9 +6,9 @@ import mysql from 'mysql2';
 const app = express();
 const port = 3000;
 
-// Leer archivo JSON con lugares turísticos
-const rawData = fs.readFileSync('./cali.json');
-const caliData = JSON.parse(rawData);
+// Leer archivo JSON con pescados
+const rawData = fs.readFileSync('./pescados.json');
+const pescadosData = JSON.parse(rawData);
 
 // Configuración de la base de datos MySQL
 const db = mysql.createConnection({
@@ -31,29 +31,29 @@ app.use(express.json());
 
 // Ruta raíz
 app.get('/', (req, res) => {
-  res.send('Bienvenido a la API de Lugares Turísticos de Cali');
+  res.send('Bienvenido a la API de pescados');
 });
 
-// Obtener todos los lugares turísticos
-app.get('/api/lugares-turisticos', (req, res) => {
-  res.json(caliData.lugares_turisticos);
+// Obtener todos los pescados
+app.get('/api/pescados', (req, res) => {
+  res.json(pescadosData.productos_pescado);
 });
 
-// Obtener un lugar turístico por ID
-app.get('/api/lugares-turisticos/:id', (req, res) => {
+// Obtener un pescados por ID
+app.get('/api/pescados/:id', (req, res) => {
   const id = parseInt(req.params.id);
-  const lugar = caliData.lugares_turisticos.find(l => l.id === id);
+  const lugar = pescadosData.productos_pescado.find(l => l.id === id);
   if (lugar) {
     res.json(lugar);
   } else {
-    res.status(404).json({ error: 'Lugar turístico no encontrado' });
+    res.status(404).json({ error: 'pescados no encontrado' });
   }
 });
 
-// Crear un nuevo lugar turístico
-app.post('/api/lugares-turisticos', (req, res) => {
+// Crear un nuevo 
+app.post('/api/pescados', (req, res) => {
   const { nombre, descripcion, imagen, descripcionlarga } = req.body;
-  const nuevoId = caliData.lugares_turisticos.length + 1;
+  const nuevoId = pescadosData.productos_pescado.length + 1;
   const nuevoLugar = {
     id: nuevoId,
     nombre,
@@ -61,35 +61,35 @@ app.post('/api/lugares-turisticos', (req, res) => {
     imagen,
     descripcionlarga
   };
-  caliData.lugares_turisticos.push(nuevoLugar);
+  pescadosData.productos_pescado.push(nuevoLugar);
   res.status(201).json(nuevoLugar);
 });
 
-// Actualizar un lugar turístico
-app.put('/api/lugares-turisticos/:id', (req, res) => {
+// Actualizar un pescados
+app.put('/api/pescados/:id', (req, res) => {
   const { id } = req.params;
   const { nombre, descripcion, imagen, descripcionlarga } = req.body;
-  let lugar = caliData.lugares_turisticos.find(l => l.id === parseInt(id));
+  let lugar = pescadosData.productos_pescado.find(l => l.id === parseInt(id));
 
   if (!lugar) {
-    return res.status(404).json({ message: 'Lugar turístico no encontrado' });
+    return res.status(404).json({ message: 'pescados no encontrado' });
   }
 
   lugar = { ...lugar, nombre, descripcion, imagen, descripcionlarga };
   res.status(200).json(lugar);
 });
 
-// Eliminar un lugar turístico
-app.delete('/api/lugares-turisticos/:id', (req, res) => {
+// Eliminar un pescados
+app.delete('/api/pescados/:id', (req, res) => {
   const { id } = req.params;
-  const index = caliData.lugares_turisticos.findIndex(l => l.id === parseInt(id));
+  const index = pescadosData.productos_pescado.findIndex(l => l.id === parseInt(id));
 
   if (index !== -1) {
-    caliData.lugares_turisticos.splice(index, 1);
-    return res.status(200).json({ message: 'Lugar turístico eliminado con éxito' });
+    pescadosData.productos_pescado.splice(index, 1);
+    return res.status(200).json({ message: 'pescados eliminado con éxito' });
   }
 
-  return res.status(404).json({ message: 'Lugar turístico no encontrado' });
+  return res.status(404).json({ message: 'pescados no encontrado' });
 });
 
 // --- Usuarios y Login (sin cambios importantes) ---

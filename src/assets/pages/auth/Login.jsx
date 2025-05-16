@@ -100,11 +100,12 @@ export const Contenedorinput = styled.section`
     color: #ffffff;
     padding: 15px;
     a {
-      color: #fffb00;
+      color: #0300c2;
       text-decoration: none;
       text-decoration: underline;
       font-size: 1rem;
       margin-left: 5px;
+      font-weight: bold;
     }
   }
 `;
@@ -260,7 +261,7 @@ export function Login() {
                     style={{ margin: 10 }}
                     type="email"
                     name="email"
-                    placeholder="correo"
+                    placeholder="Correo"
                   />
 
                   <ErrorMessage
@@ -273,13 +274,13 @@ export function Login() {
                     style={{ margin: 10 }}
                     type="password"
                     name="password"
-                    placeholder="contraseña"
+                    placeholder="Contraseña"
                   />
 
                   <ErrorMessage
                     name="password"
                     component="div"
-                    style={{ color: "#570000", fontFamily: "sans-serif" }}
+                    style={{ color: "#a00000", fontFamily: "sans-serif" }}
                   />
                   {errorMessage && (
                     <div style={{ color: "white" }}>{errorMessage}</div>

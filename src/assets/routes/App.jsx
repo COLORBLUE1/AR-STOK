@@ -1,16 +1,16 @@
 import { BrowserRouter, Route, Routes } from "react-router";
-import { Landing } from "../layouts/Landing";
 import { LugarDetalles }  from "../layouts/LugarDetalles";
-import { Login }  from "../layouts/Login";
+import { Login }  from "../pages/auth/Login";
 import { Admin } from "../layouts/Admin";
 import { LugaresTuristicosAdmin }  from "../layouts/Lugares";
+import { Home } from "../views/Home";
 
 function App() {
   return (
     <>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Landing />} />
+          <Route path="/" element={<Home />} />
           <Route path="/lugar/:id" element={<LugarDetalles />} />
           <Route path="/Login" element={<Login />} />
           <Route path="/admin-dashboard" element={<Admin />} />

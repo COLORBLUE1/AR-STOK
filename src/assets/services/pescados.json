@@ -1,0 +1,96 @@
+{
+  "productos_pescado": [
+    {
+      "id": 1,
+      "nombre": "Mojarra Roja",
+      "tipo": "Pescado entero",
+      "imagen": "https://as1.ftcdn.net/v2/jpg/13/21/68/40/1000_F_1321684082_VBrUYRXTuUR7FeKM27G5S4HzOtGE9VI0.jpg",
+      "descripcion_corta": "Pescado popular de carne blanca, ideal para freír o asar.",
+      "descripcion_larga": "La mojarra roja es uno de los pescados más consumidos en Colombia. Su carne es suave, de sabor delicado y se puede preparar frita, asada o al horno.",
+      "precio": 15000
+    },
+    {
+      "id": 2,
+      "nombre": "Filete de Tilapia",
+      "tipo": "Filete",
+      "imagen": "https://cdn.pixabay.com/photo/2020/05/07/01/28/filet-5139833_960_720.jpg",
+      "descripcion_corta": "Filete sin espinas, ideal para la plancha o empanizar.",
+      "descripcion_larga": "Filete de tilapia sin espinas, bajo en grasa y fácil de cocinar. Perfecto para preparar a la plancha o empanizado.",
+      "precio": 18000
+    },
+    {
+      "id": 3,
+      "nombre": "Trucha Arcoíris",
+      "tipo": "Pescado entero",
+      "imagen": "https://cdn.pixabay.com/photo/2015/10/05/11/10/nature-972492_960_720.jpg",
+      "descripcion_corta": "Pescado de agua fría con sabor suave.",
+      "descripcion_larga": "Criada en aguas frías, esta trucha ofrece carne suave con buen contenido de omega-3. Ideal para preparar al horno.",
+      "precio": 22000
+    },
+    {
+      "id": 4,
+      "nombre": "Lomo de Salmón",
+      "tipo": "Lomo",
+      "imagen": "https://media.istockphoto.com/id/1746375106/photo/raw-salmon-with-vegetables-fish-fillet.jpg?s=1024x1024&w=is&k=20&c=p2h4gi7R9D4zTI3G7LoxgsdK0X3luwNX4XH944mxL8k=",
+      "descripcion_corta": "Corte premium, ideal para platos gourmet.",
+      "descripcion_larga": "Lomo grueso de salmón, rico en omega-3 y sin espinas. Ideal para preparar al horno, a la plancha o en preparaciones gourmet.",
+      "precio": 48000
+    },
+    {
+      "id": 5,
+      "nombre": "Pargo Rojo",
+      "tipo": "Pescado entero",
+      "imagen": "https://media.istockphoto.com/id/480634681/photo/florida-fishing-red-snapper-fish.jpg?s=1024x1024&w=is&k=20&c=e6liUdx3qNxa6q5ahSTckjZB5QwmSvTenexyjsHKzcg=",
+      "descripcion_corta": "Ideal para freír, con carne firme y sabrosa.",
+      "descripcion_larga": "El pargo rojo es muy usado en la costa colombiana. Su carne firme y sabor intenso lo hacen perfecto para frituras o sudados.",
+      "precio": 26000
+    },
+    {
+      "id": 6,
+      "nombre": "Filete de Róbalo",
+      "tipo": "Filete",
+      "imagen": "https://static7.depositphotos.com/1194063/685/i/450/depositphotos_6856089-stock-photo-sea-bass-with-the-vegetables.jpg",
+      "descripcion_corta": "Filete firme y sabroso, sin espinas.",
+      "descripcion_larga": "El róbalo es un pescado blanco con carne firme. Su filete es ideal para plancha o preparaciones al vapor.",
+      "precio": 32000
+    },
+    {
+      "id": 7,
+      "nombre": "Posta de Bagre",
+      "tipo": "Posta",
+      "imagen": "https://st3.depositphotos.com/1000165/13873/i/600/depositphotos_138738858-stock-photo-image-of-a-salmon.jpg",
+      "descripcion_corta": "Corte grueso ideal para guisos.",
+      "descripcion_larga": "La posta de bagre es un corte ideal para sopas, guisos y sudados. Su carne es grasa y sabrosa.",
+      "precio": 18000
+    },
+    {
+      "id": 8,
+      "nombre": "Camarón Tigre",
+      "tipo": "Marisco",
+      "imagen": "https://st2.depositphotos.com/34890364/46511/i/600/depositphotos_465115328-stock-photo-raw-black-tiger-prawns-on.jpg",
+      "descripcion_corta": "Camarón grande, ideal para parrillas y cócteles.",
+      "descripcion_larga": "Camarón de gran tamaño y sabor fuerte. Ideal para cocteles, parrillas o arroz marinero.",
+      "precio": 42000
+    },
+
+    {
+      "id": 9,
+      "nombre": "Filete de Dorado",
+      "tipo": "Filete",
+      "imagen": "https://st.depositphotos.com/1868897/3968/i/600/depositphotos_39683127-stock-photo-fish-rolls-of-dorado-fillet.jpg",
+      "descripcion_corta": "Carne suave y sabrosa.",
+      "descripcion_larga": "Filete sin espinas, de sabor suave y textura jugosa. Ideal para preparaciones rápidas.",
+      "precio": 26000
+    },
+    {
+      "id": 10,
+      "nombre": "Atún Fresco",
+      "tipo": "Lomo",
+      "imagen": "https://static6.depositphotos.com/1053932/556/i/600/depositphotos_5568180-stock-photo-bluefin-four-tuna-fish-thunnus.jpg",
+      "descripcion_corta": "Corte premium, ideal para parrilla o tataki.",
+      "descripcion_larga": "Lomo de atún fresco de alta calidad. Puede prepararse sellado, en sashimi o en tataki.",
+      "precio": 55000
+    }
+
+  ]
+}

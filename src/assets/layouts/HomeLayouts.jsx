@@ -1,8 +1,11 @@
-import React from "react";
 import styled from "styled-components";
-import AppBar from "../components/AppBar";
+import AppBar from "../components/AppBar"
 import Header from "../components/Header";
-import { LugaresCards } from "../components/LugaresCards";
+import Footer from "../components/Footer";
+
+
+const Section = styled.section`
+`;
 
 const SectionHeader = styled.header`
   background: url(https://img.freepik.com/foto-gratis/mitad-espacio-copia-pescado_23-2148708639.jpg);
@@ -21,26 +24,25 @@ const SectionHeader = styled.header`
   }
 `;
 
-const Sectiontwe = styled.section`
-margin-top: 300px;
-  height: 100vh;
-  display: grid;
-  justify-items: center;
+const Sectionmain = styled.section`
+display: grid;
+grid-template-columns: 20% 80%;
+height: 100vh;
 
 `;
-export function Landing() {
+
+export function HomeLayouts({ children }) {
   return (
-    <>
+    <Section>
+      <AppBar />
       <SectionHeader>
         <div>
-          <AppBar />
           <Header />
         </div>
       </SectionHeader>
-      <Sectiontwe>
-        <h2>LUGARES TURISTICOS DE CALI</h2>
-        <LugaresCards />
-      </Sectiontwe>
-    </>
+      <Sectionmain>
+        {children}
+      </Sectionmain>
+    </Section>
   );
 }

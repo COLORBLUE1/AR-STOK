@@ -2,3 +2,7 @@
     font-family: tc;
     src: url(./Font/tcheadlinerrough/TCHeadlinerRough-CondRegular.otf);
 }
+@font-face {
+    font-family: nunito;
+    src: url(./Font/Nunito/Nunito-VariableFont_wght.ttf);
+}
