@@ -14,7 +14,7 @@ const pescadosData = JSON.parse(rawData);
 const db = mysql.createConnection({
   host: 'localhost',
   user: 'root',
-  database: 'cali',
+  database: 'GranjaBD',
   password: '',
 });
 

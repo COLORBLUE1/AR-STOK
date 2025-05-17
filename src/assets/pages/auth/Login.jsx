@@ -213,13 +213,15 @@ export function Login() {
       if (response.ok) {
         // Si el login es exitoso, procesar el rol
         const { rol } = data;
+ // Guarda el estado de login en localStorage
+  localStorage.setItem("isLoggedIn", "true");
 
         toast.success("¡Inicio de sesión exitoso!");
 
         if (rol === "admin") {
           navigate("/admin-dashboard");
-        } else if (rol === "guia") {
-          navigate("/Lugar-dashboard");
+        } else if (rol === "user") {
+          navigate("/");
         } else {
           navigate("/");
         }
