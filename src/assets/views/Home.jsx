@@ -1,36 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { ProductosCards } from "../components/ProductosCards";
 import { HomeLayouts } from "../layouts/HomeLayouts";
+import Filtros from "../components/Filtros";
 
 
-const Sectiontwe = styled.section`
-margin-top: 300px;
-  height: 100vh;
-  display: grid;
-  justify-items: center;
-`;
 
-const Filtros = styled.div`
+const Filtroscon = styled.section`
   height: 100vh;
   display: grid;
   justify-items: center;
   align-content: center;
   padding: 10px;
   gap: 50px;
-  //background-color: yellow;
-
-  strong{
-    text-align: center;
-  }
-  div{
-    height: 300px;
-    width: 100%;
-    border-radius: 15px;
-    border: solid 1px #3a3a3a6e;
-    background-color: white;
-    box-shadow: 0px 0px 13px 0px rgba(0,0,0,0.18);
-  }
 `;
 
 const Productos = styled.div`
@@ -56,34 +38,49 @@ h2{
 `;
 
 export function Home() {
+  const [filter, setFilter] = useState("");
+
   return (
     <HomeLayouts>
-      <Filtros>
-        <strong>FIltra para encontrar lo que deseas</strong>
-        <div>
-        </div>
-      </Filtros>
+      <Filtroscon>
+        <Filtros onFilter={setFilter} />
+      </Filtroscon>
       <Productos>
-        <div>
-          <h2>MIra estos filetes</h2>
-          <ProductosCards tipo={"Filete"} />
-        </div>
-        <div>
-          <h2>Pescados completos</h2>
-          <ProductosCards tipo={"Pescado entero"} />
-        </div>
-        <div>
-          <h2>Mariscos</h2>
-          <ProductosCards tipo={"Marisco"} />
-        </div>
-        <div>
-          <h2>Lomos</h2>
-          <ProductosCards tipo={"Lomo"} />
-        </div>
-        <div>
-          <h2>Posta</h2>
-          <ProductosCards tipo={"Posta"} />
-        </div>
+        {filter === "" ? (
+          <>
+            <div>
+              <h2>MIra estos filetes</h2>
+              <ProductosCards tipo="Filete" />
+            </div>
+            <div>
+              <h2>Pescados completos</h2>
+              <ProductosCards tipo="Pescado entero" />
+            </div>
+            <div>
+              <h2>Mariscos</h2>
+              <ProductosCards tipo="Marisco" />
+            </div>
+            <div>
+              <h2>Lomos</h2>
+              <ProductosCards tipo="Lomo" />
+            </div>
+            <div>
+              <h2>Posta</h2>
+              <ProductosCards tipo="Posta" />
+            </div>
+          </>
+        ) : (
+          <div>
+            <h2>
+              {filter === "Filete" && "MIra estos filetes"}
+              {filter === "Pescado entero" && "Pescados completos"}
+              {filter === "Marisco" && "Mariscos"}
+              {filter === "Lomo" && "Lomos"}
+              {filter === "Posta" && "Posta"}
+            </h2>
+            <ProductosCards tipo={filter} />
+          </div>
+        )}
       </Productos>
     </HomeLayouts>
   );

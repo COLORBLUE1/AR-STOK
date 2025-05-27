@@ -42,9 +42,9 @@ app.get('/api/pescados', (req, res) => {
 // Obtener un pescados por ID
 app.get('/api/pescados/:id', (req, res) => {
   const id = parseInt(req.params.id);
-  const lugar = pescadosData.productos_pescado.find(l => l.id === id);
-  if (lugar) {
-    res.json(lugar);
+  const pescados = pescadosData.productos_pescado.find(l => l.id === id);
+  if (pescados) {
+    res.json(pescados);
   } else {
     res.status(404).json({ error: 'pescados no encontrado' });
   }

@@ -4,7 +4,9 @@ import CircularProgress from '@mui/material/CircularProgress';
 import styled from "styled-components";
 import Footer from "../components/Footer";
 
+
 const SectionMain = styled.section`
+
   background-size: cover;
   background-attachment: fixed;
   background-repeat: no-repeat;
@@ -47,17 +49,18 @@ backdrop-filter: blur(7px);
   }
 `;
 
-export function LugarDetalles() {
-  const { id } = useParams(); // Obtenemos el ID del lugar turístico desde la URL
-  const [lugar, setLugar] = useState(null);
+export function PescadoDetalles() {
+  const { id } = useParams(); // Obtenemos el ID del pescado turístico desde la URL
+  const [pescado, setPescado] = useState(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch(`http://localhost:3000/api/lugares-turisticos/${id}`)
+    fetch(`http://localhost:3000/api/pescados/${id}`)
       .then((response) => response.json())
       .then((data) => {
-        setLugar(data);
+        setPescado(data);
         setLoading(false);
+        console.log("Datos"+data)
       })
       .catch((error) => {
         console.error("Error al cargar los detalles:", error);
@@ -69,17 +72,17 @@ export function LugarDetalles() {
     return <CircularProgress />;
   }
 
-  if (!lugar || lugar.error) {
-    return <p>Lugar turístico no encontrado</p>;
+  if (!pescado || pescado.error) {
+    return <p>pescado turístico no encontrado</p>;
   }
 
   return (
-    <SectionMain style={{ backgroundImage: `url(${lugar.imagen})` }}>
+    <SectionMain style={{ backgroundImage: `url(${pescado.imagen})` }}>
       <SectionHeader>
-        <h2>{lugar.nombre}</h2>
+        <h2>{pescado.nombre}</h2>
       </SectionHeader>
       <div>
-        <p>{lugar.descripcionlarga}</p>
+        <p>{pescado.descripcionlarga}</p>
       </div>
        <Footer/>
     </SectionMain>

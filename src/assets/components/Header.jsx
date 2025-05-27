@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import styled from "styled-components";
 import "animate.css";
@@ -28,50 +28,15 @@ const Headecontent = styled.div`
       }
     }
   }
-span{
-input{
-  width: 300px;
-  height: 20px;
-  border-radius: 20px;
-  padding: 0.5rem;
-  border: none;
-  outline: none;
-  font-size: 1.2rem;
-  margin-top: 20px;
-}
-button {
-  background: #02c5fb;
-  color: #ffffff;
-  border: none;
-  border-radius: 20px;
-  padding: 0.5rem 1rem;
-  font-size: 1.2rem;
-  cursor: pointer;
-  margin-left: 10px;
-  transition: all 0.3s ease-in-out;
-  width: 100px;
-
-  &:hover {
-    background: #ffffff;
-    color: #00eeff;
-    scale: 1.1;
-    font-weight: bold;
-    box-shadow: 0px 0px 10px #00eeff;
-  }
-}
-}
 `;
 
-const Header = () => {
+const Header = ({ onSearch }) => {
+ 
   return (
     <Headecontent>
       <div className="header-content">
         <h2>Disfruta del buen <span>pescado</span></h2>
       </div>
-      <span>
-        <input type="text" />
-        <button>Buscar</button>
-      </span>
     </Headecontent>
   );
 };

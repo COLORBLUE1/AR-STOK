@@ -49,45 +49,6 @@ export const Contenedoricon = styled.div`
   }
 `;
 
-export const Contenedortwe = styled.div`
-  color: #ff0000;
-`;
-
-export const Img = styled.img`
-  position: relative;
-  height: 250px;
-  width: 250px;
-  margin: auto;
-  background: #ffffff;
-  padding: 5px;
-  border-radius: 50%;
-  margin: 30px;
-  //animacion de imagen
-
-  animation: bounceIn;
-  animation-duration: 1s;
-`;
-
-export const TextField = styled.input`
-  background: #ffffff;
-  border: none;
-  width: clamp(18.75rem, 14.286rem + 11.905vw, 25rem);
-  height: 40px;
-  box-sizing: border-box;
-  border-radius: 10px;
-  padding-left: 30px;
-  font-family: sans-serif;
-
-  &:focus-visible {
-    outline: none;
-  }
-
-  &::placeholder {
-    color: gray;
-    font-family: sans-serif;
-  }
-`;
-
 export const Contenedorinput = styled.section`
   position: relative;
   display: grid;
@@ -132,37 +93,26 @@ export const Boton = styled.button`
   }
 `;
 
-export const LogoImg = styled.img`
-  width: clamp(6.25rem, 1.786rem + 11.905vw, 12.5rem);
-  height: clamp(6.25rem, 1.786rem + 11.905vw, 12.5rem);
+export const TextField = styled.input`
+  background: #ffffff;
+  border: none;
+  width: clamp(18.75rem, 14.286rem + 11.905vw, 25rem);
+  height: 40px;
+  box-sizing: border-box;
+  border-radius: 10px;
+  padding-left: 30px;
+  font-family: sans-serif;
 
-  //animacion de imagen
+  &:focus-visible {
+    outline: none;
+  }
 
-  animation: rubberBand;
-  animation-duration: 2s;
-`;
-
-//sections del home
-
-export const Sectionhome = styled.section`
-  position: relative;
-  top: 50px;
-  background-color: transparent;
-  height: 100vh;
-  width: clamp(25rem, 16.071rem + 23.81vw, 37.5rem);
-  overflow-y: auto;
-  margin: auto;
-  border-radius: 40px;
-  height: 100vh;
-  overflow-y: auto;
-
-  &::-webkit-scrollbar {
-    width: 0;
-    width: 0;
+  &::placeholder {
+    color: gray;
+    font-family: sans-serif;
   }
 `;
 
-// Estilos del contenedor del login
 export const Contenedorlogin = styled.div`
   border: 1px solid #ffffff83;
   backdrop-filter: blur(10px);
@@ -188,16 +138,19 @@ const validationSchema = Yup.object({
   password: Yup.string()
     .min(3, "La contraseña debe tener mínimo 3 caracteres")
     .required("Contraseña es requerida"),
+  confirmPassword: Yup.string()
+    .oneOf([Yup.ref('password'), null], 'Las contraseñas deben coincidir')
+    .required('Confirmar contraseña es requerido'),
 });
 
-export function Login() {
+export function Register () {
   const [errorMessage, setErrorMessage] = useState("");
   const navigate = useNavigate();
 
-  // Manejo del envío del formulario para inicio de sesión
+  // Manejo del envío del formulario para registro
   const handleSubmit = async (values, { setSubmitting, setErrors }) => {
     try {
-      const response = await fetch("http://localhost:3000/api/login", {
+      const response = await fetch("http://localhost:3000/api/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -211,23 +164,11 @@ export function Login() {
       const data = await response.json();
 
       if (response.ok) {
-        // Si el login es exitoso, procesar el rol
-        const { rol } = data;
- // Guarda el estado de login en localStorage
-  localStorage.setItem("isLoggedIn", "true");
-
-        toast.success("¡Inicio de sesión exitoso!");
-
-        if (rol === "admin") {
-          navigate("/admin-dashboard");
-        } else if (rol === "user") {
-          navigate("/");
-        } else {
-          navigate("/");
-        }
+        toast.success("¡Registro exitoso!");
+        navigate("/login"); // Redirigir a la página de inicio de sesión
       } else {
-        setErrorMessage(data.message || "Error en el inicio de sesión");
-        setErrors({ email: "Correo o contraseña incorrectos" });
+        setErrorMessage(data.message || "Error en el registro");
+        setErrors({ email: "Error en el registro" });
       }
     } catch (error) {
       setErrorMessage("Error en la conexión con el servidor");
@@ -252,7 +193,7 @@ export function Login() {
         <Contenedoricon>
           <Contenedorinput>
             <Formik
-              initialValues={{ email: "", password: "" }}
+              initialValues={{ email: "", password: "", confirmPassword: "" }}
               validationSchema={validationSchema}
               onSubmit={handleSubmit}
             >
@@ -284,19 +225,32 @@ export function Login() {
                     component="div"
                     style={{ color: "#a00000", fontFamily: "sans-serif" }}
                   />
+                  <Field
+                    as={TextField}
+                    style={{ margin: 10 }}
+                    type="password"
+                    name="confirmPassword"
+                    placeholder="Confirmar Contraseña"
+                  />
+
+                  <ErrorMessage
+                    name="confirmPassword"
+                    component="div"
+                    style={{ color: "#a00000", fontFamily: "sans-serif" }}
+                  />
                   {errorMessage && (
                     <div style={{ color: "white" }}>{errorMessage}</div>
                   )}
                   <Boton type="submit" disabled={isSubmitting}>
-                    Ingresar
+                    Registrarse
                   </Boton>
                 </Form>
               )}
             </Formik>
 
             <span>
-              ¿Aún no tienes una cuenta?
-              <Link to="/Registro">Registrarse</Link>
+              ¿Ya tienes una cuenta?
+              <Link to="/login">Iniciar sesión</Link>
             </span>
           </Contenedorinput>
         </Contenedoricon>

@@ -7,6 +7,10 @@ const FooterSecton = styled.section`
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-top: 150px;
+  position: relative;
+  bottom: 0;
+  width: 100%;
   h2{
     color: white;
     font-size: 80px;
