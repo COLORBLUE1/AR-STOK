@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { ProductosCards } from "../components/ProductosCards";
 import { HomeLayouts } from "../layouts/HomeLayouts";
@@ -39,7 +39,12 @@ h2{
 
 export function Home() {
   const [filter, setFilter] = useState("");
-
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  }, []);
   return (
     <HomeLayouts>
       <Filtroscon>

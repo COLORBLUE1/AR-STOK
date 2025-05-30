@@ -114,6 +114,32 @@ app.post('/api/login', (req, res) => {
   });
 });
 
+// Endpoint para registro de usuario
+app.post('/api/register', (req, res) => {
+  const { email, password } = req.body;
+  const rol = 'usuario'; 
+  if (!email || !password || !rol) {
+    return res.status(400).json({ message: 'Faltan datos para el registro' });
+  }
+  // Verifica si el usuario ya existe
+  db.query('SELECT * FROM credenciales WHERE email = ?', [email], (err, result) => {
+    if (err) return res.status(500).json({ message: 'Error en la base de datos' });
+    if (result.length > 0) {
+      return res.status(409).json({ message: 'El usuario ya existe' });
+    }
+    // Inserta el nuevo usuario
+    db.query(
+      'INSERT INTO credenciales (email, password, rol) VALUES (?, ?, ?)',
+      [email, password, rol],
+      (err) => {
+        if (err) return res.status(500).json({ message: 'Error al registrar usuario' });
+        res.status(201).json({ message: 'Usuario registrado con éxito' });
+      }
+    );
+  });
+});
+
+
 // CRUD usuarios
 app.get('/api/usuarios', (req, res) => {
   db.query('SELECT * FROM credenciales', (err, result) => {

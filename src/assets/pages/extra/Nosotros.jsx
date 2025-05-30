@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 import Footer from '../../components/Footer';
 import AppBar from '../../components/AppBar';
+import { useEffect } from 'react';
 
 const Header = styled.header`
   width: 100%;
@@ -42,6 +43,12 @@ const Content = styled.section`
 `;
 
 const Nosotros = () => {
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  }, []);
   return (
     <>
     <AppBar/>

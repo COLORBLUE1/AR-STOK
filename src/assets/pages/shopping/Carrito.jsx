@@ -1,5 +1,5 @@
 import React from "react";
-import { useCarrito } from "../provider/CarritoProvider";
+import { useCarrito } from "../../provider/CarritoProvider";
 
 
 export default function Carrito() {

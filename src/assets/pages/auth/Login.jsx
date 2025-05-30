@@ -215,6 +215,8 @@ export function Login() {
         const { rol } = data;
  // Guarda el estado de login en localStorage
   localStorage.setItem("isLoggedIn", "true");
+  localStorage.setItem("rol", rol);
+
 
         toast.success("¡Inicio de sesión exitoso!");
 

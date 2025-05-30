@@ -5,9 +5,8 @@ import { CarritoProvider } from './assets/provider/CarritoProvider'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-     <CarritoProvider>
-
-    <App />
-     </CarritoProvider>
+    <CarritoProvider>
+      <App />
+    </CarritoProvider>
   </StrictMode>,
 )
